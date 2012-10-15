@@ -1,0 +1,27 @@
+{
+    "private": true,
+    "name": "cartodb_requests_counter",
+    "description": "Rest API to query for each user's requests per day",
+    "version": "0.0.1",
+    "author": {
+        "name": "Fernando Espinosa, Vizzuality",
+        "url": "http://vizzuality.com",
+        "email": "ferdev@vizzuality.com"
+    },
+    "dependencies": {
+        "express": "~2.5.11",
+        "underscore"  : "1.1.x",
+        "underscore.string": "1.1.5",
+        "redis": "0.7.1",
+        "hiredis": "*",
+        "zlib":"1.0.5",
+        "generic-pool": "1.0.x",
+        "step": "0.0.x",
+        "date-utils": "1.2.x"
+    },
+    "devDependencies": {
+    },
+    "scripts": {
+    },
+    "engines": { "node": ">= 0.4.1 < 0.9" }
+}

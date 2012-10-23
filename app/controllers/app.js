@@ -52,6 +52,7 @@ function byDate(req, res) {
                 res.send(out);
             },
             function errorHandle(err, result){
+                console.log('[ERROR]\n' + err);
                 handleException(err, res);
             }
         );
@@ -71,7 +72,7 @@ function lastMonth(req, res) {
 
         Step(
             function createResult(err, requests_count){
-                return RequestsCounter.inLastMonth(username, this);
+                RequestsCounter.inLastMonth(username, this);
             },
             function sendResults(err, out){
                 if (err) throw err;
@@ -80,6 +81,7 @@ function lastMonth(req, res) {
                 res.send(out);
             },
             function errorHandle(err, result){
+                console.log('[ERROR]\n' + err);
                 handleException(err, res);
             }
         );

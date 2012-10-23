@@ -1,4 +1,4 @@
-module.exports.node_port               = 8080;
+module.exports.node_port               = 8090;
 module.exports.environment             = 'development';
 module.exports.redis_host              = '127.0.0.1';
 module.exports.redis_port              = 6379;

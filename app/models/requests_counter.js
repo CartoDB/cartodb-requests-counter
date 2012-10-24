@@ -71,7 +71,7 @@ module.exports = (function() {
         var that        = this;
 
         var getStatsForOneDay = function(){
-          if (day >= 31) {
+          if (day >= 30) {
             return callback(null, {'per_day': days_array, 'total': total_count});
           }
 

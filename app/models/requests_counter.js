@@ -90,5 +90,37 @@ module.exports = (function() {
 
     };
 
+    /**
+     * Get the map views count in the last 30 days for the specified user
+     *
+     * @param username - Name of the user whose requests count we want to know
+     */
+    me.mapviewsInLastMonth = function(username, callback) {
+        var today       = Date.today();
+        var start_date  = today.addDays(-30);
+        var day         = 0;
+        var days_array  = [];
+        var total_count = 0;
+        var that        = this;
+
+        var getStatsForOneDay = function(){
+          if (day >= 30) {
+            return callback(null, {'per_day': days_array, 'total': total_count});
+          }
+
+          that.score(this.requests_counter_db, "cartodb:requests-count:"+username, start_date.toYMD(), function(err, requests_count){
+            requests_count = parseInt(parseInt(requests_count || '0') / 45);
+            total_count = total_count + requests_count;
+            days_array.push(requests_count);
+
+            start_date.addDays(1);
+            day++;
+
+            getStatsForOneDay();
+          });
+        };
+        getStatsForOneDay();
+    };
+
     return me;
 })();

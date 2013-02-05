@@ -24,6 +24,7 @@ app.enable('jsonp callback');
 // basic routing
 app.all('/', function(req, res) { byDate(req, res) } );
 app.all('/requests-last-month', function(req, res) { lastMonth(req, res) } );
+app.all('/mapviews-last-month', function(req, res) { mapviewsLastMonth(req, res) } );
 
 function byDate(req, res) {
 
@@ -62,7 +63,7 @@ function byDate(req, res) {
     }
 }
 
-function lastMonth(req, res) {
+function mapviewsLastMonth(req, res) {
 
     // extract input
     var username = req.query.username; // HTTP GET and POST store in different vars
@@ -72,7 +73,7 @@ function lastMonth(req, res) {
 
         Step(
             function createResult(err, requests_count){
-                RequestsCounter.inLastMonth(username, this);
+                RequestsCounter.mapviewsInLastMonth(username, this);
             },
             function sendResults(err, out){
                 if (err) throw err;

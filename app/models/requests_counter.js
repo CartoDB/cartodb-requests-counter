@@ -109,7 +109,7 @@ module.exports = (function() {
           }
 
           that.score(this.requests_counter_db, "cartodb:requests-count:"+username, start_date.toYMD(), function(err, requests_count){
-            requests_count = parseInt(parseInt(requests_count || '0') / 45);
+            requests_count = parseInt(parseInt(requests_count || '0') / 15);
             total_count = total_count + requests_count;
             days_array.push(requests_count);
 
